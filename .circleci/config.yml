@@ -12,7 +12,7 @@ jobs:
             npm run build
   test:
     docker:
-       - image: circleci/12.22.1-browsers
+      - image: circleci/node:10.15.3-browsers 
     steps:
       - checkout # プロジェクト ディレクトリ内のコードをチェック アウトします
       - run : 
