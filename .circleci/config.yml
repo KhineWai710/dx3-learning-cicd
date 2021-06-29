@@ -11,8 +11,7 @@ jobs:
             npm install
             npm run build
       - store_artifacts:
-          path: dist/dx3-learning-cicd
-          destination: dx3-learning-cicd   
+          path: dist
   test:
     docker:
       - image: circleci/node:12-browsers 
