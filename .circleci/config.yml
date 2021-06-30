@@ -10,15 +10,20 @@ jobs:
           command: |
             npm install
             npm run build
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies
   test:
     docker:
       - image: circleci/node:12-browsers 
     steps:
       - checkout # プロジェクト ディレクトリ内のコードをチェック アウトします
+      - restore_cache:
+          key: v1-dependencies
       - run : 
           name: Test front-end
           command: |
-            npm install
             npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 workflows:
   my_workflow:
