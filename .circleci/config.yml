@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  slack: circleci/slack@4.4.2
 jobs:
   build:
     docker:
@@ -16,6 +18,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - store_artifacts:
           path: dist
+      - slack/notify:
+          event: pass
+          template: basic_fail_1
   test:
     docker:
       - image: circleci/node:12-browsers 
