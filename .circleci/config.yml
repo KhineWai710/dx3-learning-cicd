@@ -13,7 +13,7 @@ jobs:
             npm install
             npm run build
       - slack/notify:
-          event: always
+          event: pass
           template: basic_fail_1
       - save_cache:
           paths:
