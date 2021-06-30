@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  slack: circleci/slack@4.4.2
 jobs:
   build:
     docker:
@@ -10,6 +12,9 @@ jobs:
           command: |
             npm install
             npm run build
+      - slack/notify:
+          event: pass
+          template: basic_fail_1
       - save_cache:
           paths:
             - node_modules
