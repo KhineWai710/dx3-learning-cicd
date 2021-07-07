@@ -34,7 +34,7 @@ jobs:
             npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
   deploy:
     docker:
-      - image: amazon/aws-cli
+      - image: circleci/node
     steps:
       - checkout
       - restore_cache:
