@@ -43,10 +43,10 @@ jobs:
             curl -sL https://rpm.nodesource.com/setup_12.x | bash -
             yum install -y nodejs
             npm install
+            npm run build
       - run:
           name: Deploy AWS 
           command:
-            npm run build
             aws s3 cp ./dist s3://dx3-ci-angular
 workflows:
   my_workflow:
