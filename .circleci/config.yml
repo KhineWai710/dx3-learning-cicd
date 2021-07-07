@@ -32,6 +32,22 @@ jobs:
           name: Test front-end
           command: |
             npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  deploy:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            curl -sL https://rpm.nodesource.com/setup_12.x | bash -
+            yum install -y nodejs
+            npm install
+      - run:
+          name: Deploy AWS 
+          command:           
+            npm run build
+            aws s3 cp ./dist s3://dx3-ci-angular
 workflows:
   my_workflow:
     jobs:
