@@ -45,7 +45,7 @@ jobs:
             npm install
       - run:
           name: Deploy AWS 
-          command:           
+          command:
             npm run build
             aws s3 cp ./dist s3://dx3-ci-angular
 workflows:
