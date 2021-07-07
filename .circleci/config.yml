@@ -34,14 +34,17 @@ jobs:
             npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
   deploy:
     docker:
-      - image: circleci/node
+      - image: amazon/aws-cli
     steps:
       - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            cd frontend
+            curl -sL https://rpm.nodesource.com/setup_10.x | bash -
+            yum install -y nodejs
       - restore_cache:
           key: v1-dependencies
-      - run:
-          name : Install AWS CLI
-          command : pip install awscli
       - run:
           name: Install dependencies
           command: |
