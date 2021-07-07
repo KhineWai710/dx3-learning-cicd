@@ -37,12 +37,14 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
+      - restore_cache:
+          key: v1-dependencies
+      - run:
+          name : Install AWS CLI
+          command : pip install awscli
       - run:
           name: Install dependencies
           command: |
-            curl -sL https://rpm.nodesource.com/setup_12.x | bash -
-            yum install -y nodejs
-            npm install
             npm run build
       - run:
           name: Deploy AWS 
