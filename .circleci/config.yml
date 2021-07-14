@@ -39,15 +39,12 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: 
+          command: |
             curl -sL https://rpm.nodesource.com/setup_12.x | bash -
-      - run:
-          name: Install nodejs
-          command: 
             yum install -y nodejs
       - run:
           name: Front Build
-          command: 
+          command: |
             npm install
             npm run build
       - run:
