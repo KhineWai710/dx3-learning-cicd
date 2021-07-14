@@ -41,6 +41,9 @@ jobs:
           name: Install dependencies
           command: 
             curl -sL https://rpm.nodesource.com/setup_12.x | bash -
+      - run:
+          name: Install nodejs
+          command: 
             yum install -y nodejs
       - run:
           name: Front Build
