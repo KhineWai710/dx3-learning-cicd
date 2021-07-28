@@ -50,8 +50,7 @@ jobs:
       - run:
           name: Deploy to S3
           command: |
-            cd ./dist
-            aws s3 cp ./dx3-ci-angular s3://dx3-ci-angular --recursive
+            aws s3 cp ./dist s3://dx3-ci-angular --recursive
 
 workflows:
   my_workflow:
